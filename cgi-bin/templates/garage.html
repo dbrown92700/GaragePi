@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="refresh" content="5">
         <meta name="viewport" content="width=400">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" sizes="192X192" href="android.png">
@@ -9,10 +8,19 @@
     <body style="width:400px;">
         <div align="center" fontsize=30>
             <p style="font-size:40px"><br><br>Garage Door Opener<br></p>
-            <p style="font-size:30px">Garage Door is<br>{{ status }}</p>
-            <a href="buttonpush.py">
+            <p style="font-size:30px">Garage Door is<br>
+            <div id="status" style="font-size:40px">{{ status }}</div></p>
+            <a href="/button">
             <input type="image" src="/apple-touch-icon.png" name="submit" value="On" width=150 height=150>
             </a>
         </div>
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({ cache: false });
+                setInterval(function() {
+                 $('#status').load('/status/');
+               }, 1000);
+            });
+        </script>
     </body>
 </html>

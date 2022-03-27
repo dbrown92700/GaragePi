@@ -67,4 +67,4 @@ def button_push():
 
 if __name__ == '__main__':
 
-	app.run(port=5000)
+	app.run(host='192.168.1.59', port=5000)
