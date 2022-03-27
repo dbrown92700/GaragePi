@@ -3,4 +3,4 @@
 import sys
 sys.path.insert(0, '/var/www/cgi-bin')
 
-from atticfan import app as application
+from garage import app as application
