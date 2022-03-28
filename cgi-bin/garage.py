@@ -45,7 +45,7 @@ app = Flask(__name__)
 app.secret_key = 'any random string'
 
 
-@app.route('/garage')
+@app.route('/')
 def garage():
 
 	return make_response(render_template('garage.html', status=door_status))
