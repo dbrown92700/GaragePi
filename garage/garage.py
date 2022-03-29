@@ -62,7 +62,7 @@ def button_push():
 
 	push_button(door_button)
 
-	return make_response(redirect('/'))
+	return make_response(redirect('/garage'))
 
 
 if __name__ == '__main__':
