@@ -3,13 +3,6 @@
     <head>
         <script src="https://code.jquery.com/jquery-3.5.0.js">
         </script>
-        <script>
-           $(".button-img").mouseover(function() {
-                $(this).attr('src', $(this).data("touch"));
-              }).mouseout(function() {
-                $(this).attr('src', $(this).data("src"));
-              });
-        </script>
         <meta name="viewport" content="width=400">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" sizes="192X192" href="/img/apple-touch-icon.png">
@@ -19,10 +12,8 @@
             <p style="font-size:30px"><br><br>Garage Door IS OFFLINE<br></p>
             <p style="font-size:30px">Garage Door is<br></p>
             <div id="status" style="font-size:40px">{{ status }}</div>
-            <a href="button">
-            <input type="image" class="button-img" data-src="/img/apple-touch-icon.png"
-                   data-touch="/img/invert.png" name="submit" value="On" width=150 height=150>
-            </a>
+            <img id="fred" class="image image-1" src="img/apple-touch-icon.png" data-src="img/apple-touch-icon.png"
+                   data-hover="img/invert.png" width=150 height=150>
         </div>
 
         <script>
@@ -32,6 +23,14 @@
                  $('#status').load('status');
                }, 1000);
             });
+        </script>
+        <script>
+           $(".image-1").mouseover(function() {
+                $(this).attr('src', $(this).data("hover"));
+                $.get('button');
+              }).mouseout(function() {
+                $(this).attr('src', $(this).data("src"));
+              });
         </script>
     </body>
 </html>
