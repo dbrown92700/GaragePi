@@ -26,8 +26,11 @@ def read_door():
 
 	while True:
 		gopen = pi.read(open_pin)
+		gclosed = pi.read(closed_pin)
 		if gopen == 0:
 			door_status = 'Open'
+		elif gclosed == 0:
+			door_status = 'Closed'
 		else:
 			door_status = 'Unknown'
 		sleep(0.5)
