@@ -8,11 +8,14 @@ from threading import Thread
 pi = pigpio.pi()
 door_button = 17
 open_pin = 24
+closed_pin = 25
 pi.set_mode(door_button, pigpio.OUTPUT)
 pi.set_pull_up_down(door_button, pigpio.PUD_DOWN)
 pi.write(door_button, 0)
 pi.set_mode(open_pin, pigpio.INPUT)
 pi.set_pull_up_down(open_pin, pigpio.PUD_DOWN)
+pi.set_mode(closed_pin, pigpio.INPUT)
+pi.set_pull_up_down(closed_pin, pigpio.PUD_DOWN)
 door_status = ''
 
 
@@ -24,9 +27,9 @@ def read_door():
 	while True:
 		gopen = pi.read(open_pin)
 		if gopen == 0:
-			door_status = 'Closed'
-		else:
 			door_status = 'Open'
+		else:
+			door_status = 'Unknown'
 		sleep(0.5)
 
 
