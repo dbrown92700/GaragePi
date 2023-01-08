@@ -4,9 +4,9 @@
         <script src="https://code.jquery.com/jquery-3.5.0.js">
         </script>
         <script>
-           $(".button-img").touchstart(function() {
+           $(".button-img").mouseover(function() {
                 $(this).attr('src', $(this).data("touch"));
-              }).touchend(function() {
+              }).mouseout(function() {
                 $(this).attr('src', $(this).data("src"));
               });
         </script>
