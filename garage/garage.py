@@ -13,9 +13,9 @@ pi.set_mode(door_button, pigpio.OUTPUT)
 pi.set_pull_up_down(door_button, pigpio.PUD_DOWN)
 pi.write(door_button, 0)
 pi.set_mode(open_pin, pigpio.INPUT)
-pi.set_pull_up_down(open_pin, pigpio.PUD_DOWN)
+pi.set_pull_up_down(open_pin, pigpio.PUD_UP)
 pi.set_mode(closed_pin, pigpio.INPUT)
-pi.set_pull_up_down(closed_pin, pigpio.PUD_DOWN)
+pi.set_pull_up_down(closed_pin, pigpio.PUD_UP)
 door_status = ''
 
 
