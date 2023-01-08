@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.0.js">
+        </script>
+        <script>
+           $(".button-img").touchstart(function() {
+                $(this).attr('src', $(this).data("touch"));
+              }).touchend(function() {
+                $(this).attr('src', $(this).data("src"));
+              });
+        </script>
         <meta name="viewport" content="width=400">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="apple-touch-icon" sizes="192X192" href="/img/apple-touch-icon.png">
@@ -24,11 +32,6 @@
                  $('#status').load('status');
                }, 1000);
             });
-            $(".button-img").touchstart(function() {
-                $(this).attr('src', $(this).data("touch"));
-              }).touchend(function() {
-                $(this).attr('src', $(this).data("src"));
-              });
         </script>
     </body>
 </html>
