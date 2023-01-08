@@ -12,7 +12,8 @@
             <p style="font-size:30px">Garage Door is<br></p>
             <div id="status" style="font-size:40px">{{ status }}</div>
             <a href="button">
-            <input type="image" src="/img/apple-touch-icon.png" name="submit" value="On" width=150 height=150>
+            <input type="image" class="button-img" data-src="/img/apple-touch-icon.png"
+                   data-touch="/img/invert.png" name="submit" value="On" width=150 height=150>
             </a>
         </div>
 
@@ -23,6 +24,11 @@
                  $('#status').load('status');
                }, 1000);
             });
+            $(".button-img").touchstart(function() {
+                $(this).attr('src', $(this).data("touch"));
+              }).touchend(function() {
+                $(this).attr('src', $(this).data("src"));
+              });
         </script>
     </body>
 </html>

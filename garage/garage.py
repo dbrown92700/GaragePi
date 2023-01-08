@@ -41,7 +41,7 @@ def read_door():
 			else:
 				moving_status = 'Unknown'
 			door_status = moving_status
-		sleep(1)
+		sleep(0.5)
 
 
 door_thread = Thread(target=read_door)
