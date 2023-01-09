@@ -32,22 +32,13 @@
             });
         </script>
         <script>
-           $(".image-1").touchstart(function() {
-                $(this).attr('src', $(this).data("hover"));
-                $.get('button');
-              }).touchend(function() {
-                $(this).attr('src', $(this).data("src"));
-              });
-        </script>
-        <script>
             document.getElementById("doorbutton").onmousedown = function() {clickbutton()};
             document.getElementById("doorbutton").touchstart = function() {clickbutton()};
             function clickbutton() {
                 document.getElementById("doorbutton").src = "/img/invert.png";
                 $.get('button');
+                const myTimeout = setTimeout(releasebutton, 1000);
               };
-            document.getElementById("doorbuttonXXX").onmouseup = function() {releasebutton()};
-            document.getElementById("doorbuttonXXX").touchend = function() {releasebutton()};
             function releasebutton() {
                 document.getElementById("doorbutton").src = "/img/apple-touch-icon.png";
               };
