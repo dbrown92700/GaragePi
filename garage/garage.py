@@ -80,10 +80,10 @@ def button_push():
 
 	if door_status == 'Open':
 		moving_status = 'Closing'
-		moving_time = 10
+		moving_time = 15
 	elif door_status == 'Closed':
 		moving_status = 'Opening'
-		moving_time = 10
+		moving_time = 15
 	else:
 		moving_status = 'Unknown'
 
