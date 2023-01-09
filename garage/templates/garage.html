@@ -25,10 +25,10 @@
             });
         </script>
         <script>
-           $(".image-1").mouseover(function() {
+           $(".image-1").touchstart(function() {
                 $(this).attr('src', $(this).data("hover"));
                 $.get('button');
-              }).mouseout(function() {
+              }).touchend(function() {
                 $(this).attr('src', $(this).data("src"));
               });
         </script>
