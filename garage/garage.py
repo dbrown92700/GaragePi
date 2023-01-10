@@ -29,19 +29,18 @@ def read_door():
 	global moving_time
 
 	while True:
-		gopen = pi.read(open_pin)
-		gclosed = pi.read(closed_pin)
-		if gopen == 0:
-			door_status = 'Open'
-		elif gclosed == 0:
-			door_status = 'Closed'
-		else:
-			if moving_time > 0:
-				moving_time -= 1
-			else:
-				moving_status = 'Unknown'
-			door_status = moving_status
-		sleep(0.5)
+		g_open = pi.read(open_pin)
+		g_closed = pi.read(closed_pin)
+		if moving_time > 0:
+			moving_time -= 1
+		if moving_time < 12:
+			if g_open == 0:
+				door_status = 'Open'
+			elif g_closed == 0:
+				door_status = 'Closed'
+			elif (moving_time == 0) and (door_status != 'Stopped'):
+				door_status = 'Stuck??'
+		sleep(1)
 
 
 door_thread = Thread(target=read_door)
@@ -75,17 +74,19 @@ def pin_status():
 @app.route('/button')
 def button_push():
 	global door_status
-	global moving_status
 	global moving_time
 
 	if door_status == 'Open':
-		moving_status = 'Closing'
-		moving_time = 15
+		door_status = 'Closing'
 	elif door_status == 'Closed':
-		moving_status = 'Opening'
-		moving_time = 15
-	else:
-		moving_status = 'Unknown'
+		door_status = 'Opening'
+	elif door_status == 'Closing':
+		door_status = 'Stopped'
+	elif door_status == 'Opening':
+		door_status = 'Closing'
+	elif door_status == 'Stopped':
+		door_status = 'Opening'
+	moving_time = 15
 
 	push_button(door_button)
 
