@@ -17,7 +17,6 @@ pi.set_pull_up_down(open_pin, pigpio.PUD_UP)
 pi.set_mode(closed_pin, pigpio.INPUT)
 pi.set_pull_up_down(closed_pin, pigpio.PUD_UP)
 door_status = ''
-moving_status = 'Unknown'
 moving_time = 0
 
 
@@ -25,7 +24,6 @@ def read_door():
 
 	global pi
 	global door_status
-	global moving_status
 	global moving_time
 
 	while True:
@@ -81,13 +79,12 @@ def button_push():
 	elif door_status == 'Closed':
 		door_status = 'Opening'
 	elif door_status == 'Closing':
-		door_status = 'Stopped'
-	elif door_status == 'Opening':
-		door_status = 'Closing'
-	elif door_status == 'Stopped':
 		door_status = 'Opening'
+	elif door_status == 'Opening':
+		door_status = 'Stopped'
+	elif door_status == 'Stopped':
+		door_status = 'Closing'
 	moving_time = 15
-
 	push_button(door_button)
 
 	return make_response(redirect('/garage'))
